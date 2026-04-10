@@ -60,44 +60,13 @@ static struct {
 
   /* TODO: Add more commands */
 
-  { "si", "Step one or N instruction", cmd_si },
-  { "info", "Print register status (info r) or watchpoint information (info w)", cmd_info },
-  { "p", "Evaluate the value of an expression", cmd_p },
-  { "x", "Scan memory, print N consecutive 4-byte values starting from EXPR", cmd_x },
-  { "w", "Set a watchpoint for an expression", cmd_w },
-  { "d", "Delete a watchpoint by its NO", cmd_d },
 };
 
 static int cmd_si(char *args) {
-  int N = 1;
-  if (args != NULL) {
-    char *arg =strtok(args, " ");
-    if (arg != NULL) {
-      N = atoi(arg);
-    }
-  }
-  cpu_exec(N);
   return 0;
 }
 
 static int cmd_info(char *args) {
-  if (args == NULL) {
-    printf("Missing command for info. Usage: info r (registers) or info w (watchpoints)\n");
-  }
-  else{
-    char *arg =strtok(args, " ");
-    if (strcmp(arg == 'r') {
-      for (int i = 0; i < 8; i++) {
-        printf("%s\t0x%08x\n", regsl[i], cpu.gpr[i]._32);
-      }
-
-    }
-    else if (arg == 'w') {
-
-  } else {
-    printf("Unknown command '%s'\n", args);
-  }
-  }
   return 0;
 }
 
